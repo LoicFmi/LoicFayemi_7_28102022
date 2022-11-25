@@ -18,7 +18,6 @@ async function getRecipes() {
         });
 }
 
-
 let cardsArray = [];
 
 // // Récupère les recettes correspondant à la recherche effectuée 
@@ -51,7 +50,7 @@ let cardsArray = [];
 //     }
 // }
 
-// // Déclenche la recherche lorsque 2 caractère ou plus sont entrés dans la barre de recherche principale
+// // Déclenche la recherche lorsque plus de 2 caractères sont entrés dans la barre de recherche principale
 // mainSearch.addEventListener('keyup', function () {
 //     console.clear();
 //     if (mainSearch.value.length > 2) {
@@ -67,15 +66,13 @@ async function mainSearchBar(recipes, value) {
     await getRecipes();
 
     cardsArray.length = 0;
-    // let containIngredient;
 
-    // recipes.ingredients.forEach(ingredient => {
-    //     if (ingredient.ingredient.toLowerCase().trim().includes(mainSearch.value.toLowerCase().trim())) {
-    //         containIngredient === true;
-    //     }
-    // });
+    cardsArray = recipes.map((recipe) => {
+       recipe.ingredients.filter(ingredient => ingredient.ingredient.toLowerCase().trim().includes(value.toLowerCase().trim()));
+    })
 
-    cardsArray = recipes.filter(recipe => recipe.ingredients.toLowerCase().trim().includes(value.toLowerCase().trim()))
+
+    // cardsArray = recipes.filter(recipe => { return recipe.ingredients.filter(ingredient => { return ingredient.ingredient.toLowerCase().trim().includes(value.toLowerCase().trim()) }) });
 
     // cardsArray = recipes.filter(recipe => { return recipe.name.toLowerCase().trim().includes(value.toLowerCase().trim()) || recipe.description.toLowerCase().trim().includes(value.toLowerCase().trim()) });
 
@@ -87,7 +84,7 @@ async function mainSearchBar(recipes, value) {
 
 }
 
-// Déclenche la recherche lorsque 2 caractère ou plus sont entrés dans la barre de recherche principale (filter())
+// Déclenche la recherche lorsque plus de 2 caractères sont entrés dans la barre de recherche principale (filter())
 mainSearch.addEventListener('keyup', function () {
     console.clear();
     if (mainSearch.value.length > 2) {
