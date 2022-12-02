@@ -57,30 +57,3 @@ mainSearch.addEventListener('keyup', function () {
         mainSearchBar();
     }
 });
-
-
-
-// // Récupère les recettes correspondant à la recherche effectuée (filter())
-// async function mainSearchBar(recipes, value) {
-
-//     await getRecipes();
-
-//     cardsArray.length = 0;
-
-//     cardsArray = recipes.filter(r => { return r.name.toLowerCase().trim().includes(value.toLowerCase().trim()) || r.description.toLowerCase().trim().includes(value.toLowerCase().trim()) || r.ingredients.some(i => i.ingredient.toLowerCase().trim().includes(value.toLowerCase().trim())) });
-
-//     if (cardsArray.length !== 0) {
-//         console.log(cardsArray);
-//     } else {
-//         console.log('Aucune recette ne correspond à votre critère…')
-//     }
-
-// }
-
-// // Déclenche la recherche lorsque plus de 2 caractères sont entrés dans la barre de recherche principale (filter())
-// mainSearch.addEventListener('keyup', function () {
-//     console.clear();
-//     if (mainSearch.value.length > 2) {
-//         mainSearchBar(recipesArray, mainSearch.value);
-//     }
-// });
