@@ -6,6 +6,27 @@ main {
     margin: 30px 100px;
 }
 
+h2 {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    padding: 0;
+    margin: 0;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
 
 /* Header */
 .header {
@@ -218,14 +239,12 @@ main {
 
 /* Recipes */
 .cards {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    width: 95%;
-    margin: 20px auto;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
 }
 
-.cards_no-recipes {
+/* .cards_no-recipes {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -238,12 +257,13 @@ main {
     font-weight: bold;
     font-size: 18px;
     color: rgb(49, 49, 49);
-}
+} */
 
 .card {
     height: 364px;
     background-color: #e7e7e7;
     border-radius: 5px;
+    width: 30%;
 }
 
 .card a {
@@ -252,7 +272,7 @@ main {
     color: #000;
 }
 
-.card_thumb {
+.card_img {
     height: 178px;
     background-color: #c7bebe;
     border-top-left-radius: 5px;
@@ -266,49 +286,51 @@ main {
 }
 
 .card_head {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .card_title {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-}
-
-.card_timeclock {
-    content: url("../assets/image/time.svg");
+    font-size: 18px;
 }
 
 .card_time {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
     gap: 7px;
+    font-size: 18px;
     font-weight: 700;
 }
 
+.card_clock {
+    width: 20px;
+}
+
 .card_content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    justify-content: space-between;
     gap: 10px;
-    margin-top: 20px;
     font-size: 12px;
 }
 
 .card_ingredients {
     height: 105px;
     overflow: hidden;
+    width: 171px;
 }
 
-.card_ingredient--bold {
+.card_ingredient_bold {
     font-weight: 700;
 }
 
 .card_description {
-    height: 109px;
-    display: -webkit-box;
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
+    height: 102px;
+    font-family: 'Roboto';
     overflow: hidden;
+    text-overflow: ellipsis;
+    width: 171px;
 }
