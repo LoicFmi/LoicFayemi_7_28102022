@@ -55,15 +55,16 @@ async function mainSearchBar() {
 // Déclenche la recherche lorsque plus de 2 caractères sont entrés dans la barre de recherche principale
 mainSearch.addEventListener('keyup', function () {
     console.clear();
-    // Vide la section cards
-    cardsSection.innerHTML = "";
     if (mainSearch.value.length > 2) {
+        // Vide la section cards
+        cardsSection.innerHTML = "";
         mainSearchBar();
     } else {
-        displayRecipes(recipesArray);
+        init();
     }
 });
 
+// Affiche les recettes 
 async function displayRecipes(recipes) {
 
     await getRecipes();
@@ -112,4 +113,3 @@ async function init() {
 }
 
 init();
-// displayRecipes(recipesArray);
