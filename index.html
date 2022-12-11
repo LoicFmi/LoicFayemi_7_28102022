@@ -35,21 +35,21 @@
 
             <section class="filter">
                 <div class="filter-custom">
-                    <input class="filter-select ingredients-filter" type="button" data-value="Ingrédients" value="Ingrédients"/>
-                    <span class="filter-arrow"><i class="fas fa-angle-down"></i></span>
-
+                    <input class="filter-select ingredients-filter" type="button" data-value="Ingrédients" value="Ingrédients" placeholder="Rechercher un ingrédient" onclick="openIngredientsFilter()"/>
+                    <span class="filter-arrow" onclick="openCloseIngredientsFilter()"><i class="fas fa-angle-down arrow"></i></span>
+                    <ul class="filter-menu ingredients-menu filter-show"></ul>
                 </div>
 
-                <div class="filter-custom">
-                    <input class="filter-select appliances-filter" type="button" data-value="Appareils" value="Appareils"/>
-                    <span class="filter-arrow"><i class="fas fa-angle-down"></i></span>
-
+                <div class="filter-custom" onclick="openCloseAppliancesFilter()">
+                    <input class="filter-select appliances-filter" type="button" data-value="Appareils" value="Appareils" placeholder="Rechercher un appareil"/>
+                    <span class="filter-arrow"><i class="fas fa-angle-down arrow"></i></span>
+                    <ul class="filter-menu appliances-menu"></ul>
                 </div>
 
-                <div class="filter-custom">
-                    <input class="filter-select ustensiles-filter" type="button" data-value="Ustensiles" value="Ustensiles"/>
-                    <span class="filter-arrow"><i class="fas fa-angle-down"></i></span>
-
+                <div class="filter-custom" onclick="openCloseUstensilesFilter()">
+                    <input class="filter-select ustensiles-filter" type="button" data-value="Ustensiles" value="Ustensiles" placeholder="Rechercher un ustensile"/>
+                    <span class="filter-arrow"><i class="fas fa-angle-down arrow"></i></span>
+                    <ul class="filter-menu ustensiles-menu"></ul>
                 </div>
             </section>
 
@@ -58,6 +58,8 @@
             </section>
         </main>
         <script src="scripts/pages/index.js"></script>
+        <script src="scripts/utils/cards.js"></script>
+        <script src="scripts/utils/filters.js"></script>
     </div>
 
 </body>
