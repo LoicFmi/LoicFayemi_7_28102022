@@ -119,6 +119,7 @@ input {
     font-size: 20px;
     margin-left: 5px;
     margin-right: 0;
+    cursor: pointer;
 }
 
 
@@ -215,7 +216,7 @@ input {
     font-size: 18px;
 }
 
-.filter_custom-option--enable {
+.filter_custom-option--disable {
     width: 33%;
     padding: 4px 0 4px 20px;
     font-size: 18px;
@@ -223,11 +224,11 @@ input {
     pointer-events: none;
 }
 
-.filter_custom-option--enable:hover {
+.filter_custom-option--disable:hover {
     cursor: default;
 }
 
-.filter_custom-option--enable::after {
+.filter_custom-option--disable::after {
     content: "";
     width: 0px;
     height: 1px;

@@ -51,6 +51,9 @@ async function getIngredientsList() {
 
 async function displayIngredientsList() {
 
+    // let counter = 0;
+    // let id;
+
     ingredientsMenu.style.display = "flex";
     // Vide le menu
     ingredientsMenu.innerHTML = "";
@@ -59,8 +62,13 @@ async function displayIngredientsList() {
 
     for (let i of ingredientsArray) {
 
+        // // Assigne un id unique à chaque ingrédient
+        // id = "ing" + counter;
+        // counter ++;
+
         const btn = document.createElement("li");
         btn.classList.add("filter_custom-option");
+        // btn.setAttribute("id", id);
         btn.innerHTML = i;
         ingredientsMenu.appendChild(btn);
 
@@ -99,7 +107,7 @@ function openCloseIngredientsFilter() {
         ingredientsSearch.type = "button";
         ingredientsSearch.value = "Ingrédients";
 
-        // Change l'orientaion de la flèche
+        // Change l'orientation de la flèche
 
         arrow.classList.remove("fa-angle-up");
         arrow.classList.add("fa-angle-down");
@@ -121,8 +129,8 @@ function addIngredientsTag(target) {
 
     tag.classList.add("tags-item", "tags-ingredients");
     tag.innerHTML =
-        `<span> ${target} 
-            <span class="tags-close" onclick="removeTag()">
+        `<span> ${target}
+            <span class="tags-close" onclick="removeIngredientTag()">
                 <i class="fa-regular fa-circle-xmark tags-close"></i>
             </span>
         </span>`;
@@ -131,9 +139,10 @@ function addIngredientsTag(target) {
 
 }
 
-function removeTag() {
+function removeIngredientTag() {
 
     const tag = document.querySelector(".tags-item")
+
 
     tag.remove();
 
@@ -155,8 +164,9 @@ document.addEventListener('click', function (e) {
 
     if (target) {
 
-        console.log(target.innerHTML);
         addIngredientsTag(target.innerHTML);
+        target.classList.remove("filter_custom-option");
+        target.classList.add("filter_custom-option--disable");
 
     }
 });
