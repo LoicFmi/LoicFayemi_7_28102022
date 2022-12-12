@@ -8,51 +8,54 @@ const ustensilesMenu = document.querySelector(".ustensiles-menu");
 const arrow = document.querySelector(".arrow");
 const filterItem = document.querySelector(".filter_custom-option");
 const tagsSection = document.querySelector(".tags");
+const ingredientsTags = document.getElementsByClassName("ingredient-tag");
+
 
 let tagsRecipesArray = [];
+let ingredientsTagsArray = [];
 let ingredientsArray = [];
 
 async function removeDuplicates(array) {
 
-    ingredientsArray = array.filter((item, index) => { return array.indexOf(item) === index });
+    ingredientsTagsArray = array.filter((item, index) => { return array.indexOf(item) === index });
 
 }
 
 async function getIngredientsList() {
 
-    ingredientsArray.length = 0;
+    ingredientsTagsArray.length = 0;
     tagsRecipesArray.length = 0;
 
     if (cardsArray.length == 0) {
-
-        tagsRecipesArray = recipesArray.filter(r => { return r.ingredients.some(i => i.ingredient.toLowerCase().trim().includes(ingredientsSearch.value.toLowerCase().trim())) });
-
-
+        ingredientsArray = recipesArray;
     } else {
+        ingredientsArray = cardsArray;
+    }
 
-        tagsRecipesArray = cardsArray.filter(r => { return r.ingredients.some(i => i.ingredient.toLowerCase().trim().includes(ingredientsSearch.value.toLowerCase().trim())) });
+    tagsRecipesArray = ingredientsArray.filter(r => { return r.ingredients.some(i => i.ingredient.toLowerCase().trim().includes(ingredientsSearch.value.toLowerCase().trim())) });
 
+    let id = 0;
+    for (let ing of ingredientsTags) {
+        tagsRecipesArray = tagsRecipesArray.filter(r => { return r.ingredients.some(i => i.ingredient.toLowerCase().trim().includes(ing.innerText.toLowerCase().trim())) });
+        id++;
     }
 
     for (let i of tagsRecipesArray) {
 
         i.ingredients.forEach(ingredient => {
             if (ingredient.ingredient.toLowerCase().trim().includes(ingredientsSearch.value.toLowerCase().trim())) {
-                ingredientsArray.push(ingredient.ingredient.charAt(0).toUpperCase() + ingredient.ingredient.slice(1).toLowerCase().trim());
+                ingredientsTagsArray.push(ingredient.ingredient.charAt(0).toUpperCase() + ingredient.ingredient.slice(1).toLowerCase().trim());
             }
         });
 
     }
 
     // Supprime les éléments en double dans le tableau
-    removeDuplicates(ingredientsArray);
+    removeDuplicates(ingredientsTagsArray);
 
 }
 
 async function displayIngredientsList() {
-
-    // let counter = 0;
-    // let id;
 
     ingredientsMenu.style.display = "flex";
     // Vide le menu
@@ -60,15 +63,10 @@ async function displayIngredientsList() {
 
     await getIngredientsList();
 
-    for (let i of ingredientsArray) {
-
-        // // Assigne un id unique à chaque ingrédient
-        // id = "ing" + counter;
-        // counter ++;
+    for (let i of ingredientsTagsArray) {
 
         const btn = document.createElement("li");
         btn.classList.add("filter_custom-option");
-        // btn.setAttribute("id", id);
         btn.innerHTML = i;
         ingredientsMenu.appendChild(btn);
 
@@ -129,7 +127,7 @@ function addIngredientsTag(target) {
 
     tag.classList.add("tags-item", "tags-ingredients");
     tag.innerHTML =
-        `<span> ${target}
+        `<span class="ingredient-tag"> ${target}
             <span class="tags-close" onclick="removeIngredientTag()">
                 <i class="fa-regular fa-circle-xmark tags-close"></i>
             </span>
@@ -139,12 +137,13 @@ function addIngredientsTag(target) {
 
 }
 
-function removeIngredientTag() {
+function removeIngredientTag(target) {
 
-    const tag = document.querySelector(".tags-item")
+    // const tag = document.querySelector(".tags-item")
 
+    target.remove();
 
-    tag.remove();
+    getIngredientsList();
 
 }
 
@@ -167,6 +166,30 @@ document.addEventListener('click', function (e) {
         addIngredientsTag(target.innerHTML);
         target.classList.remove("filter_custom-option");
         target.classList.add("filter_custom-option--disable");
+        getIngredientsList();
+        displayIngredientsList();
 
     }
+
+    console.log(tagsRecipesArray);
+
+});
+
+// Retire l'ingrédient cliqué des tags
+document.addEventListener('click', function (e) {
+    console.clear();
+    const target = e.target.closest(".tags-item");
+
+    if (target) {
+
+        removeIngredientTag(target);
+        target.classList.remove("filter_custom-option--disable");
+        target.classList.add("filter_custom-option");
+        getIngredientsList();
+        displayIngredientsList();
+
+    }
+
+    console.log(tagsRecipesArray);
+
 });

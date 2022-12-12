@@ -64,11 +64,17 @@ async function mainSearchBar() {
 
 // Déclenche la recherche lorsque plus de 2 caractères sont entrés dans la barre de recherche principale
 mainSearch.addEventListener('keyup', function () {
-    console.clear();
+    // console.clear();
     if (mainSearch.value.length > 2) {
         // Vide la section cards
         cardsSection.innerHTML = "";
         mainSearchBar();
+
+        const ingredientsSearch = document.querySelector(".ingredients-filter");
+        if (ingredientsSearch.type = "text") {
+        // displayIngredientsList();
+        openCloseIngredientsFilter();
+        }
     } else {
         init();
     }
