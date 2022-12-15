@@ -103,7 +103,7 @@ input {
     padding: 10px 20px;
 }
 
-.tags-ustensiles {
+.tags-ustensils {
     background-color: #ed6454;
 }
 
@@ -162,7 +162,7 @@ input {
     background-color: #68d9a4;
 }
 
-.ustensiles-filter {
+.ustensils-filter {
     background-color: #ed6454;
 }
 
@@ -206,7 +206,7 @@ input {
     background-color: #68d9a4;
 }
 
-.ustensiles-menu {
+.ustensils-menu {
     background-color: #ed6454;
 }
 
@@ -256,6 +256,7 @@ input {
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .card {

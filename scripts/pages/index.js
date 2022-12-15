@@ -5,18 +5,18 @@ let recipesArray = [];
 
 // Récupération des recettes
 async function getRecipes() {
-    
+
     return fetch('./data/recipes.json')
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        recipesArray = data.recipes;
-    })
-    .catch(function (error) {
-        console.error('Erreur fetch');
-        console.log(error);
-    });
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            recipesArray = data.recipes;
+        })
+        .catch(function (error) {
+            console.error('Erreur fetch');
+            console.log(error);
+        });
 }
 
 let cardsArray = recipesArray;
@@ -25,6 +25,11 @@ let cardsArray = recipesArray;
 async function init() {
 
     await getRecipes();
+
+    for (let val of tagValue) {
+        recipesArray = recipesArray.filter(r => { return r.ingredients.some(i => i.ingredient.toLowerCase().trim().includes(val.innerText.toLowerCase().trim())) });
+    }
+
     displayRecipes(recipesArray);
 
 }
@@ -35,7 +40,7 @@ init();
 // Récupère les recettes correspondant à la recherche effectuée 
 async function mainSearchBar() {
 
-    cardsArray.length = 0;
+    // cardsArray.length = 0;
     let containIngredient;
 
     await getRecipes();
@@ -55,6 +60,10 @@ async function mainSearchBar() {
         }
     }
 
+    for (let val of tagValue) {
+        cardsArray = cardsArray.filter(r => { return r.ingredients.some(i => i.ingredient.toLowerCase().trim().includes(val.innerText.toLowerCase().trim())) });
+    }
+
     if (cardsArray.length !== 0) {
         displayRecipes(cardsArray);
     } else {
@@ -62,20 +71,27 @@ async function mainSearchBar() {
     }
 }
 
-// Déclenche la recherche lorsque plus de 2 caractères sont entrés dans la barre de recherche principale
-mainSearch.addEventListener('keyup', function () {
-    // console.clear();
+function constructCardsSection() {
+
     if (mainSearch.value.length > 2) {
         // Vide la section cards
         cardsSection.innerHTML = "";
         mainSearchBar();
-
-        const ingredientsSearch = document.querySelector(".ingredients-filter");
-        if (ingredientsSearch.type = "text") {
-        // displayIngredientsList();
-        openCloseIngredientsFilter();
-        }
     } else {
+        // Vide la section cards
+        cardsSection.innerHTML = "";
         init();
     }
+
+}
+
+// Déclenche la recherche lorsque plus de 2 caractères sont entrés dans la barre de recherche principale
+mainSearch.addEventListener('keyup', function () {
+
+    cardsArray.length = 0;
+    closeIngredientsFilter();
+    closeAppliancesFilter();
+    // closeUstensilsFilter();
+    constructCardsSection();
+
 });

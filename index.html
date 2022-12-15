@@ -34,22 +34,22 @@
             </section>
 
             <section class="filter">
-                <div class="filter-custom">
+                <div class="filter-custom filter-ingredient">
                     <input class="filter-select ingredients-filter" type="button" data-value="Ingrédients" value="Ingrédients" placeholder="Rechercher un ingrédient" onclick="openIngredientsFilter()"/>
-                    <span class="filter-arrow" onclick="openCloseIngredientsFilter()"><i class="fas fa-angle-down arrow"></i></span>
+                    <span class="filter-arrow" onclick="openCloseIngredientsFilter()"><i class="fas fa-angle-down arrow ingredients-arrow"></i></span>
                     <ul class="filter-menu ingredients-menu filter-show"></ul>
                 </div>
 
-                <div class="filter-custom" onclick="openCloseAppliancesFilter()">
-                    <input class="filter-select appliances-filter" type="button" data-value="Appareils" value="Appareils" placeholder="Rechercher un appareil"/>
-                    <span class="filter-arrow"><i class="fas fa-angle-down arrow"></i></span>
-                    <ul class="filter-menu appliances-menu"></ul>
+                <div class="filter-custom filter-appliance">
+                    <input class="filter-select appliances-filter" type="button" data-value="Appareils" value="Appareils" placeholder="Rechercher un appareil" onclick="openAppliancesFilter()"/>
+                    <span class="filter-arrow" onclick="openCloseAppliancesFilter()"><i class="fas fa-angle-down arrow appliances-arrow"></i></span>
+                    <ul class="filter-menu appliances-menu filter-show"></ul>
                 </div>
 
-                <div class="filter-custom" onclick="openCloseUstensilesFilter()">
-                    <input class="filter-select ustensiles-filter" type="button" data-value="Ustensiles" value="Ustensiles" placeholder="Rechercher un ustensile"/>
-                    <span class="filter-arrow"><i class="fas fa-angle-down arrow"></i></span>
-                    <ul class="filter-menu ustensiles-menu"></ul>
+                <div class="filter-custom filter-ustensils">
+                    <input class="filter-select ustensils-filter" type="button" data-value="Ustensiles" value="Ustensiles" placeholder="Rechercher un ustensile" onclick="openAppliancesFilter()"/>
+                    <span class="filter-arrow" onclick="openCloseUstensilsFilter()"><i class="fas fa-angle-down arrow ustensils-arrow"></i></span>
+                    <ul class="filter-menu ustensils-menu filter-show"></ul>
                 </div>
             </section>
 
