@@ -210,13 +210,13 @@ input {
     background-color: #ed6454;
 }
 
-.filter_custom-option {
+.filter-custom-option {
     width: 33%;
     padding: 4px 0 4px 20px;
     font-size: 18px;
 }
 
-.filter_custom-option--disable {
+.filter-custom-option--disable {
     width: 33%;
     padding: 4px 0 4px 20px;
     font-size: 18px;
@@ -224,11 +224,11 @@ input {
     pointer-events: none;
 }
 
-.filter_custom-option--disable:hover {
+.filter-custom-option--disable:hover {
     cursor: default;
 }
 
-.filter_custom-option--disable::after {
+.filter-custom-option--disable::after {
     content: "";
     width: 0px;
     height: 1px;
@@ -237,7 +237,7 @@ input {
     transition: 300ms;
 }
 
-.filter_custom-option::after {
+.filter-custom-option::after {
     content: "";
     width: 0px;
     height: 1px;
@@ -246,7 +246,7 @@ input {
     transition: 300ms;
 }
 
-.filter_custom-option:hover::after {
+.filter-custom-option:hover::after {
     width: 15%;
 }
 
@@ -272,33 +272,33 @@ input {
     color: #000;
 }
 
-.card_img {
+.card-img {
     height: 178px;
     background-color: #c7bebe;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
 
-.card_body {
+.card-body {
     height: 186px;
     padding: 20px;
     margin: 0;
 }
 
-.card_head {
+.card-head {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
-.card_title {
+.card-title {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     font-size: 18px;
 }
 
-.card_time {
+.card-time {
     display: flex;
     align-items: center;
     gap: 7px;
@@ -306,28 +306,28 @@ input {
     font-weight: 700;
 }
 
-.card_clock {
+.card-clock {
     width: 20px;
 }
 
-.card_content {
+.card-content {
     display: flex;
     justify-content: space-between;
     gap: 10px;
     font-size: 12px;
 }
 
-.card_ingredients {
+.card-ingredients {
     height: 105px;
     overflow: hidden;
     width: 171px;
 }
 
-.card_ingredient_bold {
+.card-ingredient_bold {
     font-weight: 700;
 }
 
-.card_description {
+.card-description {
     height: 102px;
     font-family: 'Roboto';
     overflow: hidden;

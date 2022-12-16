@@ -26,8 +26,16 @@ async function init() {
 
     await getRecipes();
 
-    for (let val of tagValue) {
+    for (let val of ingredientsTagsValue) {
         recipesArray = recipesArray.filter(r => { return r.ingredients.some(i => i.ingredient.toLowerCase().trim().includes(val.innerText.toLowerCase().trim())) });
+    }
+
+    for (let val of appliancesTagsValue) {
+        recipesArray = recipesArray.filter(r => { return r.appliance.toLowerCase().trim().includes(val.innerText.toLowerCase().trim()) });
+    }
+
+    for (let val of ustensilsTagsValue) {
+        recipesArray = recipesArray.filter(r => { return r.ustensils.some(u => u.toLowerCase().trim().includes(val.innerText.toLowerCase().trim())) });
     }
 
     displayRecipes(recipesArray);
@@ -40,7 +48,7 @@ init();
 // Récupère les recettes correspondant à la recherche effectuée 
 async function mainSearchBar() {
 
-    // cardsArray.length = 0;
+    cardsArray.length = 0;
     let containIngredient;
 
     await getRecipes();
@@ -60,11 +68,20 @@ async function mainSearchBar() {
         }
     }
 
-    for (let val of tagValue) {
-        cardsArray = cardsArray.filter(r => { return r.ingredients.some(i => i.ingredient.toLowerCase().trim().includes(val.innerText.toLowerCase().trim())) });
-    }
-
     if (cardsArray.length !== 0) {
+
+        for (let val of ingredientsTagsValue) {
+            cardsArray = cardsArray.filter(r => { return r.ingredients.some(i => i.ingredient.toLowerCase().trim().includes(val.innerText.toLowerCase().trim())) });
+        }
+
+        for (let val of appliancesTagsValue) {
+            cardsArray = cardsArray.filter(r => { return r.appliance.toLowerCase().trim().includes(val.innerText.toLowerCase().trim()) });
+        }
+
+        for (let val of ustensilsTagsValue) {
+            cardsArray = cardsArray.filter(r => { return r.ustensils.some(u => u.toLowerCase().trim().includes(val.innerText.toLowerCase().trim())) });
+        }
+
         displayRecipes(cardsArray);
     } else {
         cardsSection.innerHTML = 'Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc';
@@ -91,7 +108,7 @@ mainSearch.addEventListener('keyup', function () {
     cardsArray.length = 0;
     closeIngredientsFilter();
     closeAppliancesFilter();
-    // closeUstensilsFilter();
+    closeUstensilsFilter();
     constructCardsSection();
 
 });

@@ -7,8 +7,8 @@ async function displayRecipes(recipes) {
         let ingredientsList = "";
 
         recipe.ingredients.map((e) => {
-            ingredientsList += `<li class="card_ingredient">
-              <span class="card_ingredient_bold">${e.ingredient ? e.ingredient.trim() : ""}</span> 
+            ingredientsList += `<li class="card-ingredient">
+              <span class="card-ingredient_bold">${e.ingredient ? e.ingredient.trim() : ""}</span> 
               ${e.quantity ? e.quantity.toString().trim() : ""} ${e.unit ? e.unit.toLowerCase().trim() : ""}
              </li>`;
 
@@ -19,18 +19,18 @@ async function displayRecipes(recipes) {
             "afterbegin",
             `<article class="card">
                 <a href="#">
-                    <div class="card_img"></div>
-                    <div class="card_body">
-                        <div class="card_head">
-                            <h2 class="card_title">${recipe.name.trim()}</h2>
-                            <div class="card_time">
-                                <img class="card_clock" src="../assets/clock.svg" alt="clock icon"/>
-                                <p class="card_minutes">${recipe.time.toString().trim()} min</p>
+                    <div class="card-img"></div>
+                    <div class="card-body">
+                        <div class="card-head">
+                            <h2 class="card-title">${recipe.name.trim()}</h2>
+                            <div class="card-time">
+                                <img class="card-clock" src="../assets/clock.svg" alt="clock icon"/>
+                                <p class="card-minutes">${recipe.time.toString().trim()} min</p>
                             </div>
                         </div>
-                        <div class="card_content">
-                            <ul class="card_ingredients">${ingredientsList}</ul>
-                            <p class="card_description">${recipe.description.trim()}</p>
+                        <div class="card-content">
+                            <ul class="card-ingredients">${ingredientsList}</ul>
+                            <p class="card-description">${recipe.description.trim()}</p>
                         </div>
                     </div>
                 </a>
