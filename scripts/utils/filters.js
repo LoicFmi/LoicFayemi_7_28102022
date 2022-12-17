@@ -15,6 +15,7 @@ const tagsSection = document.querySelector(".tags");
 const ingredientsTagsValue = document.getElementsByClassName("tag-ingredient-value");
 const appliancesTagsValue = document.getElementsByClassName("tag-appliance-value");
 const ustensilsTagsValue = document.getElementsByClassName("tag-ustensil-value");
+const tags = document.querySelector(".tags");
 
 
 let tagsRecipesArray = [];
@@ -196,13 +197,12 @@ ingredientsSearch.addEventListener('keyup', function () {
 
 // Ajoute l'ingrédient cliqué aux tags
 document.addEventListener('click', function (e) {
+
     const target = e.target.closest(".li-ingredient");
 
     if (target) {
 
         addIngredientsTag(target.innerHTML);
-        target.classList.remove("filter-custom-option");
-        target.classList.add("filter-custom-option--disable");
         getIngredientsList();
         displayIngredientsList();
         // Vide la section cards
@@ -214,15 +214,13 @@ document.addEventListener('click', function (e) {
 });
 
 // Retire l'ingrédient cliqué des tags
-document.addEventListener('click', function (e) {
+tags.addEventListener('click', function (e) {
 
     const target = e.target.closest(".tags-ingredients");
 
     if (target) {
 
         removeIngredientTag(target);
-        target.classList.remove("filter-custom-option--disable");
-        target.classList.add("filter-custom-option");
         closeIngredientsFilter();
         getIngredientsList();
         displayIngredientsList();
@@ -358,7 +356,7 @@ function addAppliancesTag(target) {
     tag.innerHTML =
         `<span class="tag-appliance-value"> ${target}
             <span class="tags-close" onclick="removeApplianceTag()">
-                <i class="fa-regular fa-circle-xmark tags-close"></i>
+                <i class="fa-regular fa-circle-xmark"></i>
             </span>
         </span>`;
 
@@ -392,8 +390,6 @@ document.addEventListener('click', function (e) {
     if (target) {
 
         addAppliancesTag(target.innerHTML);
-        target.classList.remove("filter-custom-option");
-        target.classList.add("filter-custom-option--disable");
         getAppliancesList();
         displayAppliancesList();
         // Vide la section cards
@@ -405,15 +401,13 @@ document.addEventListener('click', function (e) {
 });
 
 // Retire l'appareil cliqué des tags
-document.addEventListener('click', function (e) {
+tags.addEventListener('click', function (e) {
 
     const target = e.target.closest(".tags-appliances");
 
     if (target) {
 
         removeApplianceTag(target);
-        target.classList.remove("filter-custom-option--disable");
-        target.classList.add("filter-custom-option");
         closeAppliancesFilter();
         getAppliancesList();
         displayAppliancesList();
@@ -585,8 +579,6 @@ document.addEventListener('click', function (e) {
     if (target) {
 
         addUstensilsTag(target.innerHTML);
-        target.classList.remove("filter-custom-option");
-        target.classList.add("filter-custom-option--disable");
         getUstensilsList();
         displayUstensilsList();
         // Vide la section cards
@@ -598,15 +590,13 @@ document.addEventListener('click', function (e) {
 });
 
 // Retire l'ustensil cliqué des tags
-document.addEventListener('click', function (e) {
+tags.addEventListener('click', function (e) {
 
     const target = e.target.closest(".tags-ustensils");
 
     if (target) {
 
         removeUstensilTag(target);
-        target.classList.remove("filter-custom-option--disable");
-        target.classList.add("filter-custom-option");
         closeUstensilsFilter();
         getUstensilsList();
         displayUstensilsList();

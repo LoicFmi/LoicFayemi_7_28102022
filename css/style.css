@@ -216,40 +216,6 @@ input {
     font-size: 18px;
 }
 
-.filter-custom-option--disable {
-    width: 33%;
-    padding: 4px 0 4px 20px;
-    font-size: 18px;
-    color: rgb(165, 162, 162);
-    pointer-events: none;
-}
-
-.filter-custom-option--disable:hover {
-    cursor: default;
-}
-
-.filter-custom-option--disable::after {
-    content: "";
-    width: 0px;
-    height: 1px;
-    display: block;
-    background: grey;
-    transition: 300ms;
-}
-
-.filter-custom-option::after {
-    content: "";
-    width: 0px;
-    height: 1px;
-    display: block;
-    background: #fff;
-    transition: 300ms;
-}
-
-.filter-custom-option:hover::after {
-    width: 15%;
-}
-
 
 /* Recipes */
 .cards {

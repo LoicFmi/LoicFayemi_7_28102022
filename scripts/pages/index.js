@@ -49,23 +49,23 @@ init();
 async function mainSearchBar() {
 
     cardsArray.length = 0;
-    let containIngredient;
 
     await getRecipes();
 
     for (let i of recipesArray) {
 
-        i.ingredients.forEach(ingredient => {
-            if (ingredient.ingredient.toLowerCase().trim().includes(mainSearch.value.toLowerCase().trim())) {
-                containIngredient === true;
-            }
-        });
-
-        if (i.name.toLowerCase().trim().includes(mainSearch.value.toLowerCase().trim()) ||
-            i.description.toLowerCase().trim().includes(mainSearch.value.toLowerCase().trim()) ||
-            containIngredient === true) {
+        if (i.name.toLowerCase().trim().includes(mainSearch.value.toLowerCase().trim())) {
             cardsArray.push(i);
+        } else if (i.description.toLowerCase().trim().includes(mainSearch.value.toLowerCase().trim())) {
+            cardsArray.push(i);
+        } else {
+            i.ingredients.forEach(ingredient => {
+                if (ingredient.ingredient.toLowerCase().trim().includes(mainSearch.value.toLowerCase().trim())) {
+                    cardsArray.push(i);
+                }
+            });
         }
+
     }
 
     if (cardsArray.length !== 0) {
