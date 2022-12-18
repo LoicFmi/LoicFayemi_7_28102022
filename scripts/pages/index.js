@@ -52,21 +52,7 @@ async function mainSearchBar() {
 
     await getRecipes();
 
-    for (let i of recipesArray) {
-
-        if (i.name.toLowerCase().trim().includes(mainSearch.value.toLowerCase().trim())) {
-            cardsArray.push(i);
-        } else if (i.description.toLowerCase().trim().includes(mainSearch.value.toLowerCase().trim())) {
-            cardsArray.push(i);
-        } else {
-            i.ingredients.forEach(ingredient => {
-                if (ingredient.ingredient.toLowerCase().trim().includes(mainSearch.value.toLowerCase().trim())) {
-                    cardsArray.push(i);
-                }
-            });
-        }
-
-    }
+    cardsArray = recipesArray.filter(r => { return r.name.toLowerCase().trim().includes(mainSearch.value.toLowerCase().trim()) || r.description.toLowerCase().trim().includes(mainSearch.value.toLowerCase().trim()) || r.ingredients.some(i => i.ingredient.toLowerCase().trim().includes(mainSearch.value.toLowerCase().trim())) });
 
     if (cardsArray.length !== 0) {
 
