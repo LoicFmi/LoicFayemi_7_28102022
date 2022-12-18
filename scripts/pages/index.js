@@ -1,4 +1,5 @@
 const mainSearch = document.querySelector(".search-input");
+const cardsSection = document.querySelector(".cards");
 
 let recipesArray = [];
 
@@ -18,76 +19,96 @@ async function getRecipes() {
         });
 }
 
-let cardsArray = [];
+let cardsArray = recipesArray;
 
-// // Récupère les recettes correspondant à la recherche effectuée 
-// async function mainSearchBar() {
-
-//     cardsArray.length = 0;
-//     let containIngredient;
-
-//     await getRecipes();
-
-//     for (let i of recipesArray) {
-
-//         i.ingredients.forEach(ingredient => {
-//             if (ingredient.ingredient.toLowerCase().trim().includes(mainSearch.value.toLowerCase().trim())) {
-//                 containIngredient === true;
-//             }
-//         });
-
-//         if (i.name.toLowerCase().trim().includes(mainSearch.value.toLowerCase().trim()) ||
-//             i.description.toLowerCase().trim().includes(mainSearch.value.toLowerCase().trim()) ||
-//             containIngredient === true) {
-//             cardsArray.push(i);
-//         }
-//     }
-
-//     if (cardsArray.length !== 0) {
-//         console.log(cardsArray);
-//     } else {
-//         console.log('Aucune recette ne correspond à votre critère…')
-//     }
-// }
-
-// // Déclenche la recherche lorsque plus de 2 caractères sont entrés dans la barre de recherche principale
-// mainSearch.addEventListener('keyup', function () {
-//     console.clear();
-//     if (mainSearch.value.length > 2) {
-//         mainSearchBar();
-//     }
-// });
-
-
-
-// Récupère les recettes correspondant à la recherche effectuée (filter())
-async function mainSearchBar(recipes, value) {
-
+async function init() {
+    
     await getRecipes();
+    
+    for (let val of ingredientsTagsValue) {
+        recipesArray = recipesArray.filter(r => { return r.ingredients.some(i => i.ingredient.toLowerCase().trim().includes(val.innerText.toLowerCase().trim())) });
+    }
+
+    for (let val of appliancesTagsValue) {
+        recipesArray = recipesArray.filter(r => { return r.appliance.toLowerCase().trim().includes(val.innerText.toLowerCase().trim()) });
+    }
+    
+    for (let val of ustensilsTagsValue) {
+        recipesArray = recipesArray.filter(r => { return r.ustensils.some(u => u.toLowerCase().trim().includes(val.innerText.toLowerCase().trim())) });
+    }
+    
+    displayRecipes(recipesArray);
+    
+}
+
+// Affiche les recettes sur la page au chargement
+init();
+
+
+// Récupère les recettes correspondant à la recherche effectuée 
+async function mainSearchBar() {
 
     cardsArray.length = 0;
 
-    cardsArray = recipes.map((recipe) => {
-       recipe.ingredients.filter(ingredient => ingredient.ingredient.toLowerCase().trim().includes(value.toLowerCase().trim()));
-    })
+    await getRecipes();
 
+    for (let i of recipesArray) {
 
-    // cardsArray = recipes.filter(recipe => { return recipe.ingredients.filter(ingredient => { return ingredient.ingredient.toLowerCase().trim().includes(value.toLowerCase().trim()) }) });
+        if (i.name.toLowerCase().trim().includes(mainSearch.value.toLowerCase().trim())) {
+            cardsArray.push(i);
+        } else if (i.description.toLowerCase().trim().includes(mainSearch.value.toLowerCase().trim())) {
+            cardsArray.push(i);
+        } else {
+            i.ingredients.forEach(ingredient => {
+                if (ingredient.ingredient.toLowerCase().trim().includes(mainSearch.value.toLowerCase().trim())) {
+                    cardsArray.push(i);
+                }
+            });
+        }
 
-    // cardsArray = recipes.filter(recipe => { return recipe.name.toLowerCase().trim().includes(value.toLowerCase().trim()) || recipe.description.toLowerCase().trim().includes(value.toLowerCase().trim()) });
+    }
 
     if (cardsArray.length !== 0) {
-        console.log(cardsArray);
+
+        for (let val of ingredientsTagsValue) {
+            cardsArray = cardsArray.filter(r => { return r.ingredients.some(i => i.ingredient.toLowerCase().trim().includes(val.innerText.toLowerCase().trim())) });
+        }
+
+        for (let val of appliancesTagsValue) {
+            cardsArray = cardsArray.filter(r => { return r.appliance.toLowerCase().trim().includes(val.innerText.toLowerCase().trim()) });
+        }
+
+        for (let val of ustensilsTagsValue) {
+            cardsArray = cardsArray.filter(r => { return r.ustensils.some(u => u.toLowerCase().trim().includes(val.innerText.toLowerCase().trim())) });
+        }
+
+        displayRecipes(cardsArray);
     } else {
-        console.log('Aucune recette ne correspond à votre critère…')
+        cardsSection.innerHTML = 'Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc';
+    }
+}
+
+function constructCardsSection() {
+
+    if (mainSearch.value.length > 2) {
+        // Vide la section cards
+        cardsSection.innerHTML = "";
+        mainSearchBar();
+    } else {
+        // Vide la section cards
+        cardsSection.innerHTML = "";
+        init();
     }
 
 }
 
-// Déclenche la recherche lorsque plus de 2 caractères sont entrés dans la barre de recherche principale (filter())
+// Déclenche la recherche lorsque plus de 2 caractères sont entrés dans la barre de recherche principale
 mainSearch.addEventListener('keyup', function () {
-    console.clear();
-    if (mainSearch.value.length > 2) {
-        mainSearchBar(recipesArray, mainSearch.value);
-    }
+
+    cardsArray.length = 0;
+    closeIngredientsFilter();
+    closeAppliancesFilter();
+    closeUstensilsFilter();
+    constructCardsSection();
+
 });

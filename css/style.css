@@ -1,9 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Lato', sans-serif;
 }
 
 main {
     margin: 30px 100px;
+}
+
+h2 {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    padding: 0;
+    margin: 0;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+input {
+    font: inherit;
 }
 
 
@@ -73,7 +102,7 @@ main {
     padding: 10px 20px;
 }
 
-.tags-ustensiles {
+.tags-ustensils {
     background-color: #ed6454;
 }
 
@@ -85,8 +114,11 @@ main {
     background-color: #3282f7;
 }
 
-.tags-name {
-    margin-right: 13px;
+.tags-close {
+    font-size: 20px;
+    margin-left: 5px;
+    margin-right: 0;
+    cursor: pointer;
 }
 
 
@@ -104,6 +136,11 @@ main {
     width: 170px;
 }
 
+.filter-custom input[type="text"]::placeholder {
+    color: #fff;
+    opacity: 0.5;
+}
+
 .filter-select {
     border: none;
     color: #fff;
@@ -116,10 +153,6 @@ main {
     cursor: pointer;
 }
 
-.filter-select:focus {
-    outline: none;
-}
-
 .ingredients-filter {
     background-color: #3282f7;
 }
@@ -128,7 +161,7 @@ main {
     background-color: #68d9a4;
 }
 
-.ustensiles-filter {
+.ustensils-filter {
     background-color: #ed6454;
 }
 
@@ -144,6 +177,7 @@ main {
 .filter-arrow i {
     color: white;
     font-size: 20px;
+    z-index: 2;
 }
 
 .filter-menu {
@@ -157,7 +191,7 @@ main {
     top: 65px;
     color: #fff;
     width: 100%;
-    max-height: 360px;
+    max-height: 375px;
     overflow: hidden;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -171,79 +205,30 @@ main {
     background-color: #68d9a4;
 }
 
-.ustensiles-menu {
+.ustensils-menu {
     background-color: #ed6454;
 }
 
-.filter_custom-option {
+.filter-custom-option {
     width: 33%;
     padding: 4px 0 4px 20px;
     font-size: 18px;
-}
-
-.filter_custom-option--enable {
-    width: 33%;
-    padding: 4px 0 4px 20px;
-    font-size: 18px;
-    color: rgb(165, 162, 162);
-    pointer-events: none;
-}
-
-.filter_custom-option--enable:hover {
-    cursor: default;
-}
-
-.filter_custom-option--enable::after {
-    content: "";
-    width: 0px;
-    height: 1px;
-    display: block;
-    background: grey;
-    transition: 300ms;
-}
-
-.filter_custom-option::after {
-    content: "";
-    width: 0px;
-    height: 1px;
-    display: block;
-    background: #fff;
-    transition: 300ms;
-}
-
-.filter_custom-option:hover::after {
-    width: 15%;
 }
 
 
 /* Recipes */
 .cards {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    width: 95%;
-    margin: 20px auto;
-}
-
-.cards_no-recipes {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    height: 200px;
-    z-index: -1;
-}
-
-.cards_no-recipes-text {
-    font-weight: bold;
-    font-size: 18px;
-    color: rgb(49, 49, 49);
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .card {
     height: 364px;
     background-color: #e7e7e7;
     border-radius: 5px;
+    width: 30%;
 }
 
 .card a {
@@ -252,63 +237,68 @@ main {
     color: #000;
 }
 
-.card_thumb {
+.card-img {
     height: 178px;
     background-color: #c7bebe;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
 
-.card_body {
+.card-body {
     height: 186px;
     padding: 20px;
     margin: 0;
 }
 
-.card_head {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+.card-head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
-.card_title {
+.card-title {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-size: 18px;
+    width: 65%;
 }
 
-.card_timeclock {
-    content: url("../assets/image/time.svg");
-}
-
-.card_time {
+.card-time {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
     gap: 7px;
+    font-size: 18px;
     font-weight: 700;
 }
 
-.card_content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.card-clock {
+    width: 20px;
+}
+
+.card-content {
+    display: flex;
+    justify-content: space-between;
     gap: 10px;
-    margin-top: 20px;
     font-size: 12px;
 }
 
-.card_ingredients {
+.card-ingredients {
     height: 105px;
     overflow: hidden;
+    width: 171px;
 }
 
-.card_ingredient--bold {
+.card-ingredient_bold {
     font-weight: 700;
 }
 
-.card_description {
-    height: 109px;
+.card-description {
+    height: 85px;
+    font-family: 'Roboto';
+    overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
-    overflow: hidden;
+    width: 171px;
 }

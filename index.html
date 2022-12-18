@@ -34,22 +34,22 @@
             </section>
 
             <section class="filter">
-                <div class="filter-custom">
-                    <input class="filter-select ingredients-filter" type="button" data-value="Ingrédients" value="Ingrédients"/>
-                    <span class="filter-arrow"><i class="fas fa-angle-down"></i></span>
-
+                <div class="filter-custom filter-ingredient">
+                    <input class="filter-select ingredients-filter" type="button" data-value="Ingrédients" value="Ingrédients" placeholder="Rechercher un ingrédient" onclick="openIngredientsFilter()"/>
+                    <span class="filter-arrow" onclick="openCloseIngredientsFilter()"><i class="fas fa-angle-down arrow ingredients-arrow"></i></span>
+                    <ul class="filter-menu ingredients-menu filter-show"></ul>
                 </div>
 
-                <div class="filter-custom">
-                    <input class="filter-select appliances-filter" type="button" data-value="Appareils" value="Appareils"/>
-                    <span class="filter-arrow"><i class="fas fa-angle-down"></i></span>
-
+                <div class="filter-custom filter-appliance">
+                    <input class="filter-select appliances-filter" type="button" data-value="Appareils" value="Appareils" placeholder="Rechercher un appareil" onclick="openAppliancesFilter()"/>
+                    <span class="filter-arrow" onclick="openCloseAppliancesFilter()"><i class="fas fa-angle-down arrow appliances-arrow"></i></span>
+                    <ul class="filter-menu appliances-menu filter-show"></ul>
                 </div>
 
-                <div class="filter-custom">
-                    <input class="filter-select ustensiles-filter" type="button" data-value="Ustensiles" value="Ustensiles"/>
-                    <span class="filter-arrow"><i class="fas fa-angle-down"></i></span>
-
+                <div class="filter-custom filter-ustensil">
+                    <input class="filter-select ustensils-filter" type="button" data-value="Ustensiles" value="Ustensiles" placeholder="Rechercher un ustensile" onclick="openUstensilsFilter()"/>
+                    <span class="filter-arrow" onclick="openCloseUstensilsFilter()"><i class="fas fa-angle-down arrow ustensils-arrow"></i></span>
+                    <ul class="filter-menu ustensils-menu filter-show"></ul>
                 </div>
             </section>
 
@@ -58,6 +58,8 @@
             </section>
         </main>
         <script src="scripts/pages/index.js"></script>
+        <script src="scripts/utils/cards.js"></script>
+        <script src="scripts/utils/filters.js"></script>
     </div>
 
 </body>
