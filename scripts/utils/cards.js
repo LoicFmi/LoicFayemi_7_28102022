@@ -14,7 +14,7 @@ async function displayRecipes(recipes) {
 
             return ingredientsList;
         });
-
+        
         cardsSection.insertAdjacentHTML(
             "afterbegin",
             `<article class="card">

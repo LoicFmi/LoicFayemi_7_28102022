@@ -21,11 +21,10 @@ async function getRecipes() {
 
 let cardsArray = recipesArray;
 
-// Affiche les recettes sur la page au chargement
 async function init() {
-
+    
     await getRecipes();
-
+    
     for (let val of ingredientsTagsValue) {
         recipesArray = recipesArray.filter(r => { return r.ingredients.some(i => i.ingredient.toLowerCase().trim().includes(val.innerText.toLowerCase().trim())) });
     }
@@ -33,15 +32,16 @@ async function init() {
     for (let val of appliancesTagsValue) {
         recipesArray = recipesArray.filter(r => { return r.appliance.toLowerCase().trim().includes(val.innerText.toLowerCase().trim()) });
     }
-
+    
     for (let val of ustensilsTagsValue) {
         recipesArray = recipesArray.filter(r => { return r.ustensils.some(u => u.toLowerCase().trim().includes(val.innerText.toLowerCase().trim())) });
     }
-
+    
     displayRecipes(recipesArray);
-
+    
 }
 
+// Affiche les recettes sur la page au chargement
 init();
 
 

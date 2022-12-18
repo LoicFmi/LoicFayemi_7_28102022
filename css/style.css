@@ -1,4 +1,3 @@
-
 * {
     box-sizing: border-box;
 }
@@ -140,7 +139,7 @@ input {
 .filter-custom input[type="text"]::placeholder {
     color: #fff;
     opacity: 0.5;
-  }
+}
 
 .filter-select {
     border: none;
@@ -262,6 +261,7 @@ input {
     white-space: nowrap;
     text-overflow: ellipsis;
     font-size: 18px;
+    width: 65%;
 }
 
 .card-time {
@@ -294,9 +294,11 @@ input {
 }
 
 .card-description {
-    height: 102px;
+    height: 85px;
     font-family: 'Roboto';
     overflow: hidden;
-    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
     width: 171px;
 }

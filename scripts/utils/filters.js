@@ -194,7 +194,6 @@ ingredientsSearch.addEventListener('keyup', function () {
     displayIngredientsList();
 });
 
-
 // Ajoute l'ingrédient cliqué aux tags
 document.addEventListener('click', function (e) {
 
@@ -380,7 +379,6 @@ appliancesSearch.addEventListener('keyup', function () {
     displayAppliancesList();
 
 });
-
 
 // Ajoute l'appareil cliqué aux tags
 document.addEventListener('click', function (e) {
@@ -569,7 +567,6 @@ ustensilsSearch.addEventListener('keyup', function () {
     displayUstensilsList();
 
 });
-
 
 // Ajoute l'ustensil cliqué aux tags
 document.addEventListener('click', function (e) {
