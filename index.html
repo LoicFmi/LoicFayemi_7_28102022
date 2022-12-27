@@ -2,9 +2,9 @@
 <html lang="fr">
 
 <head>
-    <link rel="stylesheet" href="./css/style.css" />
-    <meta charset="UTF-8" />
-    <link rel="icon" href="./assets/image/icone.svg" />
+    <link rel="stylesheet" href="./css/style.css">
+    <meta charset="UTF-8">
+    <link rel="icon" href="./assets/image/icone.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
@@ -16,47 +16,47 @@
 <body>
     <div class="wrapper">
         <header class="header">
-                <img src="./assets/logo.svg" class="header-logo" alt="Logo : Les petits plats" />
-                <img src="./assets/les_petits_plats.svg" class="header-text" alt="Logo : Les petits plats" />
+                <img src="./assets/logo.svg" class="header-logo" alt="Logo : Les petits plats">
+                <img src="./assets/les_petits_plats.svg" class="header-text" alt="Logo : Les petits plats">
         </header>
 
         <main class="main">
-            <section class="search">
+            <div class="search">
                 <div class="search-container">
-                    <input type="text" class="search-input" placeholder="Rechercher une recette" />
+                    <input type="text" class="search-input" placeholder="Rechercher une recette">
                     <button class="search-button">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
-            </section>
+            </div>
 
-            <section class="tags">
+            <div class="tags">
 
-            </section>
+            </div>
 
-            <section class="filter">
+            <div class="filter">
                 <div class="filter-custom filter-ingredient">
-                    <input class="filter-select ingredients-filter" type="button" data-value="Ingrédients" value="Ingrédients" placeholder="Rechercher un ingrédient" onclick="openIngredientsFilter()"/>
+                    <input class="filter-select ingredients-filter" type="button" data-value="Ingrédients" value="Ingrédients" onclick="openIngredientsFilter()">
                     <span class="filter-arrow" onclick="openCloseIngredientsFilter()"><i class="fas fa-angle-down arrow ingredients-arrow"></i></span>
                     <ul class="filter-menu ingredients-menu filter-show"></ul>
                 </div>
 
                 <div class="filter-custom filter-appliance">
-                    <input class="filter-select appliances-filter" type="button" data-value="Appareils" value="Appareils" placeholder="Rechercher un appareil" onclick="openAppliancesFilter()"/>
+                    <input class="filter-select appliances-filter" type="button" data-value="Appareils" value="Appareils" onclick="openAppliancesFilter()">
                     <span class="filter-arrow" onclick="openCloseAppliancesFilter()"><i class="fas fa-angle-down arrow appliances-arrow"></i></span>
                     <ul class="filter-menu appliances-menu filter-show"></ul>
                 </div>
 
                 <div class="filter-custom filter-ustensil">
-                    <input class="filter-select ustensils-filter" type="button" data-value="Ustensiles" value="Ustensiles" placeholder="Rechercher un ustensile" onclick="openUstensilsFilter()"/>
+                    <input class="filter-select ustensils-filter" type="button" data-value="Ustensiles" value="Ustensiles" onclick="openUstensilsFilter()">
                     <span class="filter-arrow" onclick="openCloseUstensilsFilter()"><i class="fas fa-angle-down arrow ustensils-arrow"></i></span>
                     <ul class="filter-menu ustensils-menu filter-show"></ul>
                 </div>
-            </section>
+            </div>
 
-            <section class="cards">
+            <div class="cards">
 
-            </section>
+            </div>
         </main>
         <script src="scripts/pages/index.js"></script>
         <script src="scripts/utils/cards.js"></script>

@@ -108,6 +108,7 @@ function openIngredientsFilter() {
 
         ingredientsSearch.type = "text";
         ingredientsSearch.value = "";
+        ingredientsSearch.placeholder = "Rechercher un ingrédient";
         ingredientsSearch.focus();
 
         // Change l'orientation de la flèche
@@ -127,6 +128,8 @@ function closeIngredientsFilter() {
 
     ingredientsSearch.type = "button";
     ingredientsSearch.value = "Ingrédients";
+    ingredientsSearch.removeAttribute("placeholder");
+
 
     // Change l'orientation de la flèche
 
@@ -146,6 +149,8 @@ function openCloseIngredientsFilter() {
 
         ingredientsSearch.type = "button";
         ingredientsSearch.value = "Ingrédients";
+        ingredientsSearch.removeAttribute("placeholder");
+
 
         // Change l'orientation de la flèche
 
@@ -292,6 +297,7 @@ function openAppliancesFilter() {
 
         appliancesSearch.type = "text";
         appliancesSearch.value = "";
+        appliancesSearch.placeholder = "Rechercher un appareil";
         appliancesSearch.focus();
 
         // Change l'orientation de la flèche
@@ -311,6 +317,7 @@ function closeAppliancesFilter() {
 
     appliancesSearch.type = "button";
     appliancesSearch.value = "Appareils";
+    appliancesSearch.removeAttribute("placeholder");
 
     // Change l'orientation de la flèche
 
@@ -330,6 +337,8 @@ function openCloseAppliancesFilter() {
 
         appliancesSearch.type = "button";
         appliancesSearch.value = "Appareils";
+        appliancesSearch.removeAttribute("placeholder");
+
 
         // Change l'orientation de la flèche
 
@@ -480,6 +489,7 @@ function openUstensilsFilter() {
 
         ustensilsSearch.type = "text";
         ustensilsSearch.value = "";
+        ustensilsSearch.placeholder= "Rechercher un ustensile";
         ustensilsSearch.focus();
 
         // Change l'orientation de la flèche
@@ -499,6 +509,7 @@ function closeUstensilsFilter() {
 
     ustensilsSearch.type = "button";
     ustensilsSearch.value = "Ustensiles";
+    ustensilsSearch.removeAttribute("placeholder");
 
     // Change l'orientation de la flèche
 
@@ -518,6 +529,7 @@ function openCloseUstensilsFilter() {
 
         ustensilsSearch.type = "button";
         ustensilsSearch.value = "Ustensiles";
+        ustensilsSearch.removeAttribute("placeholder");
 
         // Change l'orientation de la flèche
 
